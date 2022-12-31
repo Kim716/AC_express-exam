@@ -9,12 +9,15 @@ const exhbs = require("express-handlebars");
 app.engine("handlebars", exhbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// 設定靜態檔案
+app.use(express.static("public"));
+
 // 定義變數
 const port = 3000;
 
 // 設定路由
 app.get("/", (req, res) => {
-  res.end(`hey`);
+  res.render("index");
 });
 
 // 監聽
