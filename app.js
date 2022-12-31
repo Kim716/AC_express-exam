@@ -20,6 +20,15 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/:a", (req, res) => {
+  const pageNameLower = req.params.a;
+  /// 為了避免網址出現大寫，所以 a href 都為小寫，取網址的字串下來把第一個改為大寫
+  const pageName =
+    pageNameLower[0].toUpperCase() +
+    pageNameLower.slice(1, pageNameLower.length);
+  res.render("detail", { pageName });
+});
+
 // 監聽
 app.listen(port, () => {
   console.log(`listening...`);
